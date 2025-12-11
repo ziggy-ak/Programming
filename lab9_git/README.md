@@ -122,9 +122,9 @@
 **Шаг 17-22: "Работа с git restore"**  
 Пояснение: Добавил в sort.c строку printf("hello git\n");. `git status` показал изменение. Команда `git restore sort.c` откатила файл к состоянию последнего коммита и добавленная строка исчезла. `git restore` позволяет безопасно отменять незакоммиченные изменения в рабочей директории.
 
-![Шаг 17-22:](screenshots/rating4_17-22_restore.png)
-![Шаг 17-22:](screenshots/rating4_17-22_restore2.png)
-![Шаг 17-22:](screenshots/rating4_17-22_restore3.png)
+![Шаг 17-22:](screenshots/screenshotsrating4_17-22_restore.png)
+![Шаг 17-22:](screenshots/screenshotsrating4_17-22_restore2.png)
+![Шаг 17-22:](screenshots/screenshotsrating4_17-22_restore3.png)
 
 **Шаг 23: "Отправка ветки mybranch на GitHub"**  
 Пояснение: `git push origin mybranch` отправил все локальные коммиты ветки на удалённый репозиторий. 
@@ -141,9 +141,9 @@
 **Шаг 6-11: "Работа в ветке feature/uppercase"**  
 Пояснение: В ветке feature/uppercase изменил greeting.txt на "HELLO" (верхний регистр), закоммитил. `git branch` показывает три ветки, `git log --oneline --graph --all` показывает историю: feature/uppercase опережает main на 1 коммит. После переключения на main, файл greeting.txt содержит "hello" (нижний регистр).
 
-![Шаг 6-11: История и содержимое файлов](screenshots/merge_6-11_log_cat.png)
-![Шаг 6-11: История и содержимое файлов](screenshots/merge_6-11_log_cat2.png)
-![Шаг 6-11: История и содержимое файлов](screenshots/merge_6-11_log_cat3.png)
+![Шаг 6-11: История и содержимое файлов](screenshots/screenshotsmerge_6-11_log_cat.png)
+![Шаг 6-11: История и содержимое файлов](screenshots/screenshotsmerge_6-11_log_cat2.png)
+![Шаг 6-11: История и содержимое файлов](screenshots/screenshotsmerge_6-11_log_cat3.png)
 
 **Шаг 12-15: "Сравнение веток и разрешение конфликта при merge"**  
 Пояснение: `git diff` показал разницу: в main было "hello", в feature/uppercase "HELLO". При merge возник конфликт. Файл greeting.txt содержал конфликтные маркеры. После редактирования (оставлена версия "hello") и коммита слияние завершено. Ветка feature/uppercase удалена.
