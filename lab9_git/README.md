@@ -150,3 +150,9 @@
 
 ![Шаг 12-15: Конфликт и merge](screenshots/merge_12-15_conflict.png)
 ![Шаг 12-15: Конфликт и merge](screenshots/merge_12-15_conflict2.png)
+
+**Шаг 16-19: "Слияние с mybranch "**  
+Пояснение: При слиянии `git merge mybranch` возник конфликт в файлах скриншотов. Конфликт разрешён удалением проблемного файла. `git log --oneline --graph --all` показывает объединённую историю всех веток.
+
+![Шаг 16-19: merge и push](screenshots/final_merge_push.png)
+![Шаг 16-19: merge и push](screenshots/final_merge_push2.png)
