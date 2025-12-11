@@ -11,3 +11,11 @@ void bubbleSort(int arr[], int n) {
         }
     }
 }
+
+
+void main() {
+    int a[] = {2, 0, 7, 3}; 
+    int n = sizeof(a) / sizeof(a[0]);
+    
+    bubbleSort(a, n);
+}
