@@ -156,3 +156,44 @@
 
 ![Шаг 16-19: merge и push](screenshots/final_merge_push.png)
 ![Шаг 16-19: merge и push](screenshots/final_merge_push2.png)
+
+## Часть 1. На оценку 5.
+
+**Шаг 1-5: "Создание разных версий файла в разных ветках"**  
+Пояснение: В ветке branch1 создал file.txt с текстом "This is a relevant fact". В main создал другой текст "This is an indispensable truth!". Ветки содержат разные версии одного файла.
+
+**Шаг 6-7: "Попытка слияния и возникновение конфликта"**  
+Пояснение: `git log --oneline --graph --all` показал расхождение веток. При `git merge branch1` возник конфликт типа add/add обе ветки добавили файл с разным содержимым.
+
+![Шаг 6-7: История и конфликт](screenshots/conflict1_6-7.png)
+
+**Шаг 8-12: "Разрешение конфликта и завершение слияния"**  
+Пояснение: Git status показал состояние "unmerged". Файл содержал только версию из main. Вручную объединил обе версии. После коммита merge завершён, история показывает успешное слияние.
+
+![Шаг 8-12: Разрешение конфликта](screenshots/conflict1_8-12_1.png)
+![Шаг 8-12: Разрешение конфликта](screenshots/conflict1_8-12_2.png)
+![Шаг 8-12: Разрешение конфликта](screenshots/conflict1_8-12_3.png)
+
+## Часть 2. На оценку 5.
+
+**Шаг 1-3: "Создание базовой версии и ветки для разработки"**  
+Пояснение: В main создал mergesort.py с кодом из base.py. Создал ветку Mergesort-Impl.
+
+![Шаг 1-3: Базовая версия mergesort.py](screenshots/mergesort_1-3_base.png)
+
+**Шаг 3-7: "Разные версии"**  
+Пояснение: Создал ветку Mergesort-Impl и заменил mergesort.py на версию из righty.py. В main, заменил файл на версию из lefty.py. Теперь ветки содержат разные версии одного файла.
+
+![Шаг 3-7: Две разные версии mergesort.py](screenshots/mergesort_3-7_versions.png)
+
+**Шаг 8-10: "Слияние версий."**  
+Пояснение: `git log --oneline --graph` показал расходящиеся ветки main и Mergesort-Impl. При попытке слияния `git merge Mergesort-Impl` возникли множественные конфликты: различия в порядке переменных (left/right), их именах (last/fourth) и форматировании. Файл mergesort.py содержал конфликтные маркеры, показывающие противоречивые изменения от двух разработчиков.
+
+![Шаг 8-10: Конфликт в mergesort.py](screenshots/mergesort_8-10_conflict_1.png)
+![Шаг 8-10: Конфликт в mergesort.py](screenshots/mergesort_8-10_conflict_2.png)
+![Шаг 8-10: Конфликт в mergesort.py](screenshots/mergesort_8-10_conflict_3.png)
+
+**Шаг 11-12: "Разрешение конфликта"**  
+Пояснение: Конфликт разрешён принятием версии из ветки Mergesort-Impl (righty.py). После коммита слияния все изменения локальной ветки main отправлены на репозиторий.
+
+![Шаг 11-12: Финальный push](screenshots/mergesort_11-12_final.png)
