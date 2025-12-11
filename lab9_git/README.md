@@ -91,5 +91,62 @@
 
 ![Шаг 16-17: Выводы команд git push -u origin mybranch и git push origin main](screenshots/16_git_push.png)
 
+## Часть 1. На оценку 4
 
+**Шаг 1-4: "Работа в mybranch с sort.c"**  
+Пояснение: Переключился на ветку mybranch, дополнил sort.c функцией main() с массивом. `git diff` показал изменения, `git diff --staged` был пуст — правки не в staged.
 
+![Шаг 1-4: Правка sort.c и diff](screenshots/4.1_sort.c.png)
+
+**Шаг 5-7: "Добавление в staged и сравнение diff"**  
+Пояснение: После `git add sort.c` изменения переместились из рабочей директории в staged. `git diff` стал пустым , а `git diff --staged` показал те же изменения, что ранее показывал `git diff` (добавление функции main()). Это демонстрирует, как изменения переходят между областями.
+
+![Шаг 5-7: Diff после добавления в staged](screenshots/rating4_5-7_diff.png)
+
+**Шаг 8-11: "Изменение массива и анализ diff"**  
+Пояснение: Удалил число 4 из массива в sort.c. Теперь `git diff` показывает только это новое изменение (удаление числа), а `git diff --staged` показывает старое изменение (добавление main()). Файл имеет два состояния.
+
+![Шаг 8-11: Diff после удаления числа](screenshots/rating4_8-11_diff.png)
+
+**Шаг 12-15: "Двойное состояние файла и фиксация изменений"**  
+Пояснение: `git status` показал sort.c в двух разделах: изменения в staged (добавление main()) и в working directory (удаление числа). `git restore --staged` убрал файл из staged, объединив оба изменения. После добавления и коммита зафиксирована версия с массивом {2, 0, 7, 3}.
+
+![Шаг 12-15: Статус и коммит](screenshots/rating4_12-15_status_commit.png)
+![Шаг 12-15: Статус и коммит](screenshots/rating4_12-15_status_commit2.png)
+
+**Шаг 16: "Проверка журнала коммитов"**  
+Пояснение: `git log --oneline` показывает три последних коммита в ветке mybranch. Последний коммит `ec2f3d3` это добавление функции main(), предыдущие работа с file1.txt и sort.c. Ветка mybranch опережает origin/mybranch на 1 коммит.
+
+![Шаг 16: Журнал коммитов](screenshots/rating4_16_log.png)
+
+**Шаг 17-22: "Работа с git restore"**  
+Пояснение: Добавил в sort.c строку printf("hello git\n");. `git status` показал изменение. Команда `git restore sort.c` откатила файл к состоянию последнего коммита и добавленная строка исчезла. `git restore` позволяет безопасно отменять незакоммиченные изменения в рабочей директории.
+
+![Шаг 17-22:](screenshots/rating4_17-22_restore.png)
+![Шаг 17-22:](screenshots/rating4_17-22_restore2.png)
+![Шаг 17-22:](screenshots/rating4_17-22_restore3.png)
+
+**Шаг 23: "Отправка ветки mybranch на GitHub"**  
+Пояснение: `git push origin mybranch` отправил все локальные коммиты ветки на удалённый репозиторий. 
+
+![Шаг 23: Push ветки](screenshots/rating4_23_push.png)
+
+## Часть 2. На оценку 4
+
+**Шаг 1-5: "Создание новой ветки и файла"**  
+Пояснение: В ветке main создал файл greeting.txt (пустой), закоммитил. Затем добавил в него "hello" и закоммитил. После этого создал новую ветку feature/uppercase.
+
+![Шаг 1-5: Создание ветки feature/uppercase](screenshots/merge_1-5_branch.png)
+
+**Шаг 6-11: "Работа в ветке feature/uppercase"**  
+Пояснение: В ветке feature/uppercase изменил greeting.txt на "HELLO" (верхний регистр), закоммитил. `git branch` показывает три ветки, `git log --oneline --graph --all` показывает историю: feature/uppercase опережает main на 1 коммит. После переключения на main, файл greeting.txt содержит "hello" (нижний регистр).
+
+![Шаг 6-11: История и содержимое файлов](screenshots/merge_6-11_log_cat.png)
+![Шаг 6-11: История и содержимое файлов](screenshots/merge_6-11_log_cat2.png)
+![Шаг 6-11: История и содержимое файлов](screenshots/merge_6-11_log_cat3.png)
+
+**Шаг 12-15: "Сравнение веток и разрешение конфликта при merge"**  
+Пояснение: `git diff` показал разницу: в main было "hello", в feature/uppercase "HELLO". При merge возник конфликт. Файл greeting.txt содержал конфликтные маркеры. После редактирования (оставлена версия "hello") и коммита слияние завершено. Ветка feature/uppercase удалена.
+
+![Шаг 12-15: Конфликт и merge](screenshots/merge_12-15_conflict.png)
+![Шаг 12-15: Конфликт и merge](screenshots/merge_12-15_conflict2.png)
