@@ -14,31 +14,6 @@ struct ThreadData{
     int *C;
 }typedef ThreadData;
 
-
-// void deadThread(void* arg) {
-//     ThreadData *data = (ThreadData*)arg;
-//     printf("Поток %d: Я умер! :(\n", data->id);
-//     free(data);
-// }
-
-// void* printHello(void* arg) {
-//     int i = 0;
-//     ThreadData *data = (ThreadData*)arg;
-//     pthread_cleanup_push(deadThread, data);
-
-//     while(i < N && stop == 0){
-//         pthread_mutex_lock(&mutex);
-//         if (numb == 1){
-//             printf("Поток %d: %s\n", data->id, data->message);
-//             numb = 0;
-//             i++;
-//         }
-//         pthread_mutex_unlock(&mutex);
-        
-//     }
-//     pthread_cleanup_pop(1);
-// }
-
 void* ProizvedMat(void* arg){
     ThreadData *data = (ThreadData*)arg;
     for (int i = data->nomer_str; i < (data->nomer_str + data->str_count); i++) {          
