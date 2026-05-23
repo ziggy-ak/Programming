@@ -1,0 +1,109 @@
+{
+	"parameters": {
+		"host": "http://172.23.240.1:8000/"
+	},
+
+	"network": {
+		"connect_timeout_ms": 1000,
+		"timeout_ms": 5000
+	},
+	
+	"requests":{
+		"register": {
+			"method": "POST",
+			"path": "/auth/register/",
+			"auth_required": 0,
+			"query":{},
+
+			"headers": {
+				"Content-Type": "application/json"
+			},
+			"body": {
+				"username": "str",
+				"email": "str",
+				"password": "str"
+			},
+			
+			"behavior": {
+				"delay_ms": 1000
+			}
+		},
+		
+		"login": {
+			"method": "POST",
+			"path": "/auth/login/",
+			"auth_required": 0,
+			"query":{},
+			
+			"headers": {
+				"Content-Type": "application/json"
+			},
+			"body": {
+				"username_or_email": "str",
+				"password": "str"
+			},
+			
+			"behavior": {
+				"delay_ms": 1000
+			}
+		},
+		
+		"send_message": {
+			"method": "POST",
+			"path": "/messages/send/",
+			"auth_required": 1,
+			"query":{},
+			
+			"headers": {
+				"Content-Type": "application/json"
+			},
+			"body": {
+				"recipient_username": "str", 
+				"text": "str"
+			},
+			
+			"behavior": {
+				"weight": 60,
+				"delay_ms": 1000
+			}
+		},
+		
+		"get_dialogs": {
+			"method": "GET",
+			"path": "/dialogs/",
+			"auth_required": 1,
+			"query":{},
+			
+			"headers": {
+				"Content-Type": "application/json"
+			},
+			"body": {
+			},
+			
+			"behavior": {
+				"weight": 30,
+				"delay_ms": 1000
+			}
+		},
+		
+		"get_dialog": {
+			"method": "GET",
+			"path": "/dialogs/",
+			"auth_required": 1,
+			"query":{
+				"username": "str"
+			},
+			
+			"headers": {
+				"Content-Type": "application/json"
+			},
+			"body": {
+			},
+			
+			"behavior": {
+				"weight": 30,
+				"delay_ms": 1000
+			}
+		}
+	}
+}
